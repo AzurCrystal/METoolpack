@@ -31,6 +31,12 @@ All interface, gfx, localisation and opinion-modifier files are **not** copied �
 | Toolpack without the Errors | [Workshop 2913150560](https://steamcommunity.com/sharedfiles/filedetails/?id=2913150560) |
 | **This patch** — enable alongside both; `dependencies` makes it load last | |
 
+## Troubleshooting
+
+- **Toolpack panel/button missing in-game**: press **Ctrl+Shift+H** (toggles `toolpack_hidden` global flag), then **Ctrl+T** to open the panel. The open-arrow sits at the lower-right edge (~21px in, ~260px up) and is easy to miss.
+- **Toolpack not listed among active mods**: the Workshop download was still in progress when the game launched — quit and restart after Steam finishes downloading. Do NOT install a same-named local copy alongside the Workshop item (name collision).
+- The upstream `TPT_pos_*_tyes` malformed-token warnings in error.log are an upstream quirk (opinion-modifier names exceeding the token limit); they skip those two effects harmlessly and are kept verbatim.
+
 ## What was changed for the ME map
 
 Exactly **8 lines** in `common/scripted_guis/tpt.txt`: the faction-treaty flavour names (`tpt_create_faction_click`) test `owns_state` against vanilla capital-state IDs that mean different states on the ME map. They are remapped to the ME state holding the corresponding capital victory point:
